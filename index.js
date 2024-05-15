@@ -2,17 +2,10 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import cors from 'cors';
-
 import multer from 'multer';
-
-// import { restart } from 'nodemon';
-
 import { registerValidation, loginValidation, postCreateValidation } from './validations/auth.js';
-
 import { checkAuth, handleValidationErrors } from './utils/index.js';
-import { UserController, PostController } from './controllers/index.js'; // все методы из UserController.js сохрани в перемен UserController
-
-// import User from './models/User.js';
+import { UserController, PostController } from './controllers/index.js';
 
 mongoose
    .connect(
@@ -28,27 +21,36 @@ const storage = multer.diskStorage({
       cb(null, 'uploads');
    },
    filename: (_, file, cb) => {
-      cb(null, file.originalname);
+      // Уникальное имя файла для избежания конфликтов
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+      cb(null, `${file.originalname}-${uniqueSuffix}`, { encoding: 'utf-8' });
    },
 });
-app.use(cors());
-const upload = multer({ storage }); // у мультера храниище сделалитз стородж
 
-app.use(express.json()); // чтобы читать джейсон запросы.
+const documentUpload = multer({ storage });
+
+app.use(cors());
+app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login);
-app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register); //  если придет пост запрос вернуть сексес тру, регистрация
-app.get('/auth/me', checkAuth, UserController.getMe);
-
-app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+// Маршрут для загрузки документа Word
+app.post('/uploadDocument', checkAuth, documentUpload.single('document'), (req, res) => {
+   // Возвращаем URL загруженного документа
    res.json({
-      url: `/uploads/${req.file.originalname}`,
+      url: `/uploads/${req.file.filename}`,
    });
 });
 
+// Остальные маршруты без изменений
+app.post('/auth/login', loginValidation, handleValidationErrors, UserController.login);
+app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register);
+app.get('/auth/me', checkAuth, UserController.getMe);
+app.post('/upload', checkAuth, documentUpload.single('image'), (req, res) => {
+   res.json({
+      url: `/uploads/${req.file.filename}`,
+   });
+});
 app.get('/tags', PostController.getLastTags);
-
 app.get('/posts', PostController.getAll);
 app.get('/posts/tags', PostController.getLastTags);
 app.get('/posts/:id', PostController.getOne);
@@ -66,27 +68,5 @@ app.listen(4444, (err) => {
    if (err) {
       return console.log(err);
    }
-
    console.log('Server OK');
 });
-
-// app.get('/', (req, res) => {
-//    res.send('Hello World');
-// }); // если придет гет запрос вернуть хеловорлд
-
-// app.post('/auth/login', (req, res) => {
-//    console.log(req.body); // с помошью req получаем инфу
-
-//    const token = jwt.sign(
-//       {
-//          email: req.body.email,
-//          fullName: 'Хрен Моржовый',
-//       },
-//       'secret123',
-//    ); // шифрует данные
-
-//    res.json({
-//       success: true,
-//       token,
-//    });
-// }); //  если придет пост запрос вернуть сексес тру
