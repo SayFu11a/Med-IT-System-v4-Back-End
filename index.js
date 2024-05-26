@@ -5,7 +5,7 @@ import cors from 'cors';
 import multer from 'multer';
 import { registerValidation, loginValidation, postCreateValidation } from './validations/auth.js';
 import { checkAuth, handleValidationErrors } from './utils/index.js';
-import { UserController, PostController } from './controllers/index.js';
+import { UserController, PostController, MessageController } from './controllers/index.js';
 
 mongoose
    .connect(
@@ -63,6 +63,12 @@ app.patch(
    handleValidationErrors,
    PostController.update,
 );
+
+app.post('/health/addRecord', checkAuth, UserController.addHealthRecord);
+app.get('/health/records', checkAuth, UserController.getHealthRecords);
+
+app.post('/messages', MessageController.sendMessage);
+app.get('/messages', MessageController.getMessages);
 
 app.listen(4444, (err) => {
    if (err) {

@@ -103,3 +103,33 @@ export const getMe = async (req, res) => {
       });
    }
 };
+
+export const addHealthRecord = async (req, res) => {
+   try {
+      const { date, symptoms } = req.body;
+      const user = await UserModel.findById(req.userId);
+      if (!user) {
+         return res.status(404).json({ message: 'Пользователь не найден' });
+      }
+      // Добавление новой записи о самочувствии
+      user.healthRecords.push({ date, symptoms });
+      await user.save();
+      res.status(201).json(user);
+   } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: 'Ошибка при добавлении записи о самочувствии' });
+   }
+};
+
+export const getHealthRecords = async (req, res) => {
+   try {
+      const user = await UserModel.findById(req.userId);
+      if (!user) {
+         return res.status(404).json({ message: 'Пользователь не найден' });
+      }
+      res.json(user.healthRecords);
+   } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: 'Ошибка при получении записей о самочувствии' });
+   }
+};

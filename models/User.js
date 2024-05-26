@@ -1,5 +1,37 @@
 import mongoose from 'mongoose';
 
+const UserMessageSchema = new mongoose.Schema({
+   senderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+   },
+   receiverId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+   },
+   message: {
+      type: String,
+      required: true,
+   },
+   timestamp: {
+      type: Date,
+      default: Date.now,
+   },
+});
+
+const UserHealthRecordSchema = new mongoose.Schema({
+   date: {
+      type: Date,
+      required: true,
+   },
+   symptoms: {
+      type: Map,
+      of: Boolean,
+   },
+});
+
 const UserSchema = new mongoose.Schema(
    {
       fullName: {
@@ -16,11 +48,13 @@ const UserSchema = new mongoose.Schema(
          required: true,
       },
       avatarUrl: String,
+      healthRecords: [UserHealthRecordSchema],
       patient: {
          type: Boolean,
          default: false, // Значение по умолчанию - false, если не указано иное
          required: false,
       },
+      messages: [UserMessageSchema],
    },
    {
       timestamps: true,
