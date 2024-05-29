@@ -84,6 +84,20 @@ export const login = async (req, res) => {
    }
 };
 
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find()
+    res.json(users);
+
+ } catch (err) {
+    console.log(err);
+    res.status(500).json({
+       message: 'Нет доступа',
+    });
+ }
+}
+
+
 export const getMe = async (req, res) => {
    try {
       const user = await UserModel.findById(req.userId);
