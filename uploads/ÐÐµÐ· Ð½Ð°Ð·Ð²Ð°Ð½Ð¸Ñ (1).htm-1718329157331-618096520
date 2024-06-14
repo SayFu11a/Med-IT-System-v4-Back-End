@@ -1,0 +1,1608 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>ЭКГ (электрокардиография) — МедЛаб</title>
+	<link rel="preconnect" href="https://mc.yandex.ru">
+	<link rel="preconnect" href="https://mc.yandex.com">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	
+	<link rel="stylesheet" href="/local/templates/medlab/css/main.css?1716929644">
+	<link rel="stylesheet" href="/local/templates/medlab/template_styles.css?1682956208">
+	
+	<script src="/local/templates/medlab/js/jquery-3.6.0.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Электрокардиография (ЭКГ) с расшифровкой для оценки сердечного ритма" />
+<script type="text/javascript" data-skip-moving="true">(function(w, d) {var v = w.frameCacheVars = {'CACHE_MODE':'HTMLCACHE','storageBlocks':[],'dynamicBlocks':{'ALi5r5':'d41d8cd98f00','u2G36s':'a12a83256768','VijsdO':'8d2978f411a5','I6VduV':'525a5f0fa4bb','PWq6Sz':'d41d8cd98f00','ouHQju':'2e5326d6f0aa','aLzmcq':'95328cbd75fb','xZANm1':'f22287453887','51yma7':'4e2f11b8ad44','fyb9E1':'b7546df3bcf7','DgrExt':'ed0e5d5abf99'},'AUTO_UPDATE':true,'AUTO_UPDATE_TTL':'0','version':'2'};var inv = false;if (v.AUTO_UPDATE === false){if (v.AUTO_UPDATE_TTL && v.AUTO_UPDATE_TTL > 0){var lm = Date.parse(d.lastModified);if (!isNaN(lm)){var td = new Date().getTime();if ((lm + v.AUTO_UPDATE_TTL * 1000) >= td){w.frameRequestStart = false;w.preventAutoUpdate = true;return;}inv = true;}}else{w.frameRequestStart = false;w.preventAutoUpdate = true;return;}}var r = w.XMLHttpRequest ? new XMLHttpRequest() : (w.ActiveXObject ? new w.ActiveXObject("Microsoft.XMLHTTP") : null);if (!r) { return; }w.frameRequestStart = true;var m = v.CACHE_MODE; var l = w.location; var x = new Date().getTime();var q = "?bxrand=" + x + (l.search.length > 0 ? "&" + l.search.substring(1) : "");var u = l.protocol + "//" + l.host + l.pathname + q;r.open("GET", u, true);r.setRequestHeader("BX-ACTION-TYPE", "get_dynamic");r.setRequestHeader("X-Bitrix-Composite", "get_dynamic");r.setRequestHeader("BX-CACHE-MODE", m);r.setRequestHeader("BX-CACHE-BLOCKS", v.dynamicBlocks ? JSON.stringify(v.dynamicBlocks) : "");if (inv){r.setRequestHeader("BX-INVALIDATE-CACHE", "Y");}try { r.setRequestHeader("BX-REF", d.referrer || "");} catch(e) {}if (m === "APPCACHE"){r.setRequestHeader("BX-APPCACHE-PARAMS", JSON.stringify(v.PARAMS));r.setRequestHeader("BX-APPCACHE-URL", v.PAGE_URL ? v.PAGE_URL : "");}r.onreadystatechange = function() {if (r.readyState != 4) { return; }var a = r.getResponseHeader("BX-RAND");var b = w.BX && w.BX.frameCache ? w.BX.frameCache : false;if (a != x || !((r.status >= 200 && r.status < 300) || r.status === 304 || r.status === 1223 || r.status === 0)){var f = {error:true, reason:a!=x?"bad_rand":"bad_status", url:u, xhr:r, status:r.status};if (w.BX && w.BX.ready && b){BX.ready(function() {setTimeout(function(){BX.onCustomEvent("onFrameDataRequestFail", [f]);}, 0);});}w.frameRequestFail = f;return;}if (b){b.onFrameDataReceived(r.responseText);if (!w.frameUpdateInvoked){b.update(false);}w.frameUpdateInvoked = true;}else{w.frameDataString = r.responseText;}};r.send();var p = w.performance;if (p && p.addEventListener && p.getEntries && p.setResourceTimingBufferSize){var e = 'resourcetimingbufferfull';var h = function() {if (w.BX && w.BX.frameCache && w.BX.frameCache.frameDataInserted){p.removeEventListener(e, h);}else {p.setResourceTimingBufferSize(p.getEntries().length + 50);}};p.addEventListener(e, h);}})(window, document);</script>
+
+<link href="/local/components/fls.medlab/components_services/templates/.default/style.css?168096032846" type="text/css"  rel="stylesheet" />
+<link href="/local/templates/medlab/styles.css?16977402581370" type="text/css"  data-template-style="true"  rel="stylesheet" />
+<link href="/local/templates/medlab/template_styles.css?16829562081298" type="text/css"  data-template-style="true"  rel="stylesheet" />
+
+
+
+<script type="text/javascript" src="/bitrix/js/main/core/core.min.js?1680958675260887"></script>
+
+<script>BX.setJSList(['/bitrix/js/main/core/core_ajax.js','/bitrix/js/main/core/core_promise.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/loadext/loadext.js','/bitrix/js/main/loadext/extension.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/includes/js/includes.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/ui/polyfill/closest/js/closest.js','/bitrix/js/main/polyfill/fill/main.polyfill.fill.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/core/core.js','/bitrix/js/main/polyfill/intersectionobserver/js/intersectionobserver.js','/bitrix/js/main/lazyload/dist/lazyload.bundle.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/parambag/dist/parambag.bundle.js']);
+BX.setCSSList(['/bitrix/js/main/lazyload/dist/lazyload.bundle.css','/bitrix/js/main/parambag/dist/parambag.bundle.css']);</script>
+
+
+<script type="text/javascript" src="/bitrix/js/main/polyfill/customevent/main.polyfill.customevent.min.js?1680958674556"></script>
+
+<script type="text/javascript" src="/bitrix/js/main/core/core_ls.min.js?16809586757365"></script>
+
+<script type="text/javascript" src="/bitrix/js/main/core/core_frame_cache.min.js?168095867511082"></script>
+<link rel="canonical" href="https://medlabspb.ru/services/diagnostics/electrocardiogram-ecg/" />
+
+<script type="text/javascript" src="/local/components/fls.medlab/search/templates/.default/script.js?16829519421165"></script>
+
+	<script src="/local/templates/medlab/js/main.js?1716990360" defer></script>
+	<script src="/local/templates/medlab/template_scripts.js?1716990367"></script>
+	
+	
+
+	 	<script type="application/ld+json"> { "@context": "https://schema.org", "@type": "ItemList", "name": "ЭКГ (электрокардиография)", "numberOfItems": "2", "description": "ЭКГ (электрокардиография) от 1 200 ₽ в клиниках МедЛаб в Санкт-Петербурге. ", "image": "https://medlabspb.ru/images/logo-header-medlab.png", "itemListElement": { "@type": "OfferCatalog", "name": "ЭКГ (электрокардиография)", "itemListElement": [ { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "ЭКГ (регистрация+расшифровка)", "image": "https://medlabspb.ru/images/logo-header-medlab.png", "description": "Сделать ЭКГ с регистрацией и расшифровкой быстро рядом с метро СПБ", "url": "https://medlabspb.ru/services/diagnostics/electrocardiogram-ecg/ekg-registraciyarasshifrovka/", "brand": { "@type": "Brand", "name": "МедЛаб" }, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.79", "reviewCount": "130" }, "offers": { "@type": "Offer", "priceCurrency": "RUB", "price": "1200", "priceValidUntil": "2023-12-31", "availability": "http://schema.org/InStock", "itemCondition": "http://schema.org/NewCondition", "seller": { "@type": "Organization", "name": "МедЛаб" }, "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "RUB" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "RU", "addressRegion": ["Санкт-Петербург"] }, "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 3, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" } } }, "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "RU", "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted" } } } }, { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "ЭКГ с нагрузкой (2 регистрации+расшифровка)", "image": "https://medlabspb.ru/images/logo-header-medlab.png", "description": "Снятие ЭКГ с нагрузкой с регистрацией и расшифровкой в СПБ по доступным ценам", "url": "https://medlabspb.ru/services/diagnostics/electrocardiogram-ecg/ekg-s-nagruzkoy-2-registraciirasshifrovka/", "brand": { "@type": "Brand", "name": "МедЛаб" }, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.98", "reviewCount": "129" }, "offers": { "@type": "Offer", "priceCurrency": "RUB", "price": "1400", "priceValidUntil": "2023-12-31", "availability": "http://schema.org/InStock", "itemCondition": "http://schema.org/NewCondition", "seller": { "@type": "Organization", "name": "МедЛаб" }, "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": "RUB" }, "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "RU", "addressRegion": ["Санкт-Петербург"] }, "deliveryTime": { "@type": "ShippingDeliveryTime", "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 3, "unitCode": "DAY" }, "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" } } }, "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "applicableCountry": "RU", "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted" } } } } ] } } </script><meta name="google-site-verification" content="4JknxMeyqVBIeMiV2x0DjiBKJp48xBgHcJw5F6Eq2Hw" />	
+ </head>
+<body>
+<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(11332435, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor: false }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/11332435" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+<div class="ml-wrapper ml-fixed-wrapper">
+    <div id="bxdynamic_ALi5r5_start" style="display:none"></div><div id="bxdynamic_ALi5r5_end" style="display:none"></div>    <div class="ml-wrapper-container">
+        <header>
+            <div class="ml-header">
+                <div class="ml-logo__open"></div>
+								                <a class="ml-logo" href="/">
+                    <div class="ml-logo__desktop">
+                        <img src="/local/templates/medlab/assets/icons/logo-header-des.svg" alt="МедЛаб – сеть медицинских центров и лабораторий в Санкт‑Петербурге">
+                        <p>Сеть медицинских центров и лабораторий в&nbsp;Санкт‑Петербурге</p>
+                    </div>
+                    <img class="ml-logo__mobile"
+                         src="/local/templates/medlab/assets/icons/logo-header-mobile-s.svg"
+                         alt="Cеть медицинских центров и лабораторий МедЛаб"
+                    >
+                </a>
+								                <div class="ml-header__control">
+                    <div class="ml-header__info">
+                        <a href="tel:+78126002210">+7 (812) 600-22-10</a>                        <p><span>Пн–Пт: 8–21</span><span> Сб–Вс: 8–20</span></p></div>                        <div class="ml-header__info-phone">
+                            <a class="ml-btn-call" data-fancybox data-src="#request-call"></a>
+                        </div>
+                        <div class="ml-header__info-phone__mobile">
+                            <a class="ml-btn-call" href="tel:+78126002210" id="js-call-choice"></a>
+                        </div>
+                        <div class="ml-header-mobile-call-modal d-none">
+                            <a class="ml-btn mobile-call-choice__cancel" data-fancybox data-src="#request-call">Заказать
+                                звонок</a>
+                            <a class="ml-btn mobile-call-choice__cancel" href="tel:+78126002210">Вызов +7 (812)
+                                600-22-10</a>
+                            <a class="ml-btn mobile-call-choice__cancel">Отменить</a>
+                        </div>
+                        <a href="/appointment/">
+                            <button class="ml-btn" type="button">Записаться <span>на прием</span></button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="ml-sbar">
+                    <div class="ml-sidebar">
+                        <div class="ml-sidebar__menu">
+                            <p>Меню</p>
+                            <span class="ml-sidebar__menu--close"></span>
+                        </div>
+
+                        <div id="bxdynamic_u2G36s_start" style="display:none"></div>    <form method="get" action="/search/" id="ml-search">
+        <div class="ml-sidebar__search-wrapp ml-sidebar__search-wrapp--clear">
+            <input class="ml-sidebar__search" name="q" type="search" placeholder="Поиск (не менее 3 символов)">
+            <button class="ml-sidebar__search-clear" type="button" style="display: none"></button>
+            <button id="ml-search-btn" class="ml-sidebar__search-btn" type="submit" aria-label="Поиск"></button>
+        </div>
+        <span class="ml-sidebar__search-close">Закрыть</span>
+    </form>
+<div id="bxdynamic_u2G36s_end" style="display:none"></div>
+                        <nav>
+                            <div id="bxdynamic_VijsdO_start" style="display:none"></div>
+<ul>
+                                <li class="ml-top">
+                <a class="  1"
+                   href="/o-nas/nashi-specialisty/"
+                >
+                                        Врачи                </a>
+            </li>
+                                        <li class="ml-drop-menu">
+                <a class="  1">
+                    Стоимость услуг<span></span>
+                </a>
+                <ul class="ml-drop-down-menu">
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/doctors-appointments/"
+                            >
+                                Прием врачей                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/analyzes/"
+                            >
+                                Анализы                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/ultrasound/"
+                            >
+                                УЗИ                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/diagnostics/"
+                            >
+                                Диагностика                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/procedures/"
+                            >
+                                Процедуры                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/material-sampling/"
+                            >
+                                Забор материала                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/services/promotions/"
+                            >
+                                Акции                            </a>
+                        </li>
+                                    </ul>
+            </li>
+                                        <li class="ml-drop-menu">
+                <a class="  1">
+                    Пациентам<span></span>
+                </a>
+                <ul class="ml-drop-down-menu">
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/vyezd-medsestry-na-dom/"
+                            >
+                                Выезд медсестры на дом                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/discount-program/"
+                            >
+                                Дисконтная программа                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/preparation-analyzes/"
+                            >
+                                Подготовка к анализам                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/preparation-examinations/"
+                            >
+                                Подготовка к обследованиям                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/rules-visiting-medical-centers/"
+                            >
+                                Правила посещения медцентров                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/faq/"
+                            >
+                                Часто задаваемые вопросы                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/tax-deduction/"
+                            >
+                                Налоговый вычет                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/pacientam/articles-about-health/"
+                            >
+                                Статьи                            </a>
+                        </li>
+                                    </ul>
+            </li>
+                                        <li class="ml-top">
+                <a class="  1"
+                   href="/medcentry/"
+                >
+                                        Медцентры                </a>
+            </li>
+                                        <li class="ml-drop-menu">
+                <a class="  1">
+                    О нас<span></span>
+                </a>
+                <ul class="ml-drop-down-menu">
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/o-nas/news/"
+                            >
+                                Новости                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/o-nas/about/"
+                            >
+                                О МедЛаб                            </a>
+                        </li>
+                                            <li>
+                            <a
+                                    class=" "
+                                    href="/o-nas/legal-information/"
+                            >
+                                Правовая информация                            </a>
+                        </li>
+                                    </ul>
+            </li>
+                                        <li class="ml-top">
+                <a class="  1"
+                   href="/o-nas/jobs/"
+                >
+                                        Вакансии                </a>
+            </li>
+            </ul>
+<div id="bxdynamic_VijsdO_end" style="display:none"></div>                            <div class="ml-sidebar__actions">
+                                <div id="bxdynamic_I6VduV_start" style="display:none"></div>    <button class="ml-btn-search" type="button" aria-label="Поиск"></button>
+<div id="bxdynamic_I6VduV_end" style="display:none"></div>                                <a class="ml-btn-lk" href="https://lk.medlabspb.ru/">
+                                    <span class="ml-btn-lk__icon">
+                                        <img src="/local/templates/medlab/assets/icons/lk-user.svg" alt="Личный кабинет" width="24" height="24"></span>
+                                    <span class="ml-btn-lk__text">Личный кабинет</span>
+                                </a>
+                            </div>
+                        </nav>
+
+                        <div class="ml-sidebar__contact">
+                            <p>Колл-центр</p>
+                            <a href="tel:+78126002210">+7 (812) 600-22-10</a>                            <p><span>Пн–Пт: 8–21</span><span> Сб–Вс: 8–20</span></p></div>                            <a class="ml-btn ml-sidebar__btn" data-fancybox data-src="#request-call">
+                                <span></span>Заказать звонок
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </header>
+    </div>
+</div>
+<div class="container">
+    <main class="ml-main-wrapper">
+                    <nav class="ml-breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><ul><li class="ml-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="kb-breadcrumbs__item-link" href="/" itemprop="item"><span itemprop="name">Главная</span></a><meta itemprop="position" content="1" /></li><li class="ml-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="kb-breadcrumbs__item-link" href="/services/diagnostics/" itemprop="item"><span itemprop="name">Диагностика</span></a><meta itemprop="position" content="2" /></li><li class="ml-breadcrumbs__item current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">ЭКГ (электрокардиография)</span><meta itemprop="position" content="3" /></li></ul></nav>        
+
+<div id="bxdynamic_PWq6Sz_start" style="display:none"></div><div id="bxdynamic_PWq6Sz_end" style="display:none"></div>
+<div id="bxdynamic_ouHQju_start" style="display:none"></div><div class="ml-content">
+            <div class="ml-banner ">
+            <div class="ml-banner-info">
+                <h1>ЭКГ (электрокардиография)</h1>
+                <div class="ml-banner-wrap">
+                                            <h2>от 1 200 ₽                                                    </h2>
+                                                            <div class="ml-banner-info__btn">
+                                                <!-- data-anchor-->
+                                                    <a class="ml-btns js-btn-anchor-cost"
+                               href="#"
+                               data-anchor="section-services-cost"
+                            >
+                                Стоимость услуг                            </a>
+                                            </div>
+                </div>
+            </div>
+                            <div class="ml-banner-info__bg">
+                    <img src="/upload/scrud/c98/cg62422xh6xpsl6vj3acqqqj0o9qb1t7.jpg" alt="ЭКГ (электрокардиография)">
+                </div>
+                    </div>
+    </div>
+<div class="ml-content">
+    <div class="ml-accordion__container">
+        <div class="ml-accordion__links">
+            <!--Область контента-->
+                                                                    <a class="ml-accordion__links-item active" href="#section-1">
+                        Что такое ЭКГ?                    </a>
+                                                        <a class="ml-accordion__links-item active" href="#section-2">
+                        Задачи ЭКГ                    </a>
+                                                        <a class="ml-accordion__links-item active" href="#section-3">
+                        Виды ЭКГ                    </a>
+                                                        <a class="ml-accordion__links-item active" href="#section-4">
+                        Показания                    </a>
+                                                        <a class="ml-accordion__links-item active" href="#section-5">
+                        Подготовка                    </a>
+                                                        <a class="ml-accordion__links-item active" href="#section-6">
+                        Запись на ЭКГ                    </a>
+                                                        <a class="ml-accordion__links-item active"
+                   href="#section-7"
+                >
+                    Стоимость услуг
+                </a>
+                                        <a class="ml-accordion__links-item active"
+                   href="#section-8"
+                >
+                    Медцентры
+                </a>
+                                        <a class="ml-accordion__links-item active"
+                   href="#section-9"
+                >
+                    Специалисты
+                </a>
+                                        <a class="ml-accordion__links-item active"
+                   href="#section-10"
+                >
+                    Рекомендуемые услуги
+                </a>
+                    </div>
+        <div class="ml-accordion__section">
+            <span class="main-date">22 мая 2023</span>
+                                                                                <div class="ml-accordion active"
+                         id="section-1"
+                    >
+                        <div class="ml-accordion__head js-accordion-toggle">
+                            <span class="ml-circle-arrow"></span>
+                            <h2 class="ml-accordion__heading">Что такое ЭКГ?</h2>
+                        </div>
+                        <div class="ml-accordion__body" style="display: block;">
+                            <p>
+ <b>Электрокардиография (ЭКГ)</b>&nbsp;— это метод исследования сердечного ритма и&nbsp;проводимости, широко применяемый в&nbsp;кардиологии и&nbsp;терапии.
+</p>
+<h3>Принцип метода ЭКГ</h3>
+<p>
+	 Аппарат для записи ЭКГ улавливает биоэлектрический импульс, возникающий перед каждым сердечным сокращением, и&nbsp;переводит его на&nbsp;бумагу в&nbsp;виде определенного графика. Полученный рисунок отражает ритмичность сокращений, время прохождения возбуждения по&nbsp;структурам сердца и&nbsp;сократимость отдельных участков миокарда. Анализ полученных данных требует специфического навыка и&nbsp;опыта расшифровки ЭКГ.&nbsp;Некоторые отклонения могут быть неспецифическими и&nbsp;требуют дообследования. Некоторые требуют оказания неотложной медицинской помощи. В&nbsp;любом случае анализ ЭКГ проводится только опытным врачом.
+</p>
+<p>
+ <img width="500" alt="аппарат экг" src="/upload/medialibrary/700/4xbqsn8xafqh7nfvvwnx9ecy33dxmj45.jpg" align="middle"><br>
+</p>                        </div>
+                    </div>
+                                                        <div class="ml-accordion active"
+                         id="section-2"
+                    >
+                        <div class="ml-accordion__head js-accordion-toggle">
+                            <span class="ml-circle-arrow"></span>
+                            <h2 class="ml-accordion__heading">Задачи ЭКГ</h2>
+                        </div>
+                        <div class="ml-accordion__body" style="display: block;">
+                            <ul>
+	<li>Оценка ритма и&nbsp;проводимости</li>
+	<li>Выявление ишемии, рубцовых изменений</li>
+	<li>Скрининг для выявления гипертонии, кардиомиопатии</li>
+	<li>Оценка переносимости физической нагрузки</li>
+</ul>
+ <img width="500" alt="лента экг" src="/upload/medialibrary/bc2/c1mmkyydm66jvavi5tdockdpwwh2u9yg.jpg" align="middle">                        </div>
+                    </div>
+                                                        <div class="ml-accordion active"
+                         id="section-3"
+                    >
+                        <div class="ml-accordion__head js-accordion-toggle">
+                            <span class="ml-circle-arrow"></span>
+                            <h2 class="ml-accordion__heading">Виды ЭКГ</h2>
+                        </div>
+                        <div class="ml-accordion__body" style="display: block;">
+                            <ul>
+	<li>Стандартная ЭКГ (около 10 секунд)</li>
+	<li>ЭКГ с&nbsp;нагрузкой (10 секунд после 30 приседаний)</li>
+	<li><nobr>Стресс-тест</nobr> (оценка работы сердца на&nbsp;фоне максимально допустимой физической нагрузки)</li>
+	<li>Суточное мониторирование (Непрерывная запись ЭКГ в&nbsp;течение 1&nbsp;— 7 суток)</li>
+	<li>Имплантируемый регистратор (подшивается аналогично кардиостимулятору и&nbsp;контролирует работу сердца месяцами)</li>
+</ul>
+ <img width="500" alt="экг проведение процедуры" src="/upload/medialibrary/4e6/mbh219t71yfa4w26pgfowzoxhxj0vw4q.jpg" align="middle">                        </div>
+                    </div>
+                                                        <div class="ml-accordion active"
+                         id="section-4"
+                    >
+                        <div class="ml-accordion__head js-accordion-toggle">
+                            <span class="ml-circle-arrow"></span>
+                            <h2 class="ml-accordion__heading">Показания</h2>
+                        </div>
+                        <div class="ml-accordion__body" style="display: block;">
+                            <ul><li>Любые жалобы со&nbsp;стороны <nobr>сердечно-сосудистой</nobr> системы: повышение давления, одышка при нагрузке, отеки, сердцебиение, перебои, замирания при работе сердца. </li><li>Обследование перед любым оперативным вмешательством. </li><li>Плановые осмотры для оценки состояния общего здоровья.</li></ul>                        </div>
+                    </div>
+                                                        <div class="ml-accordion active"
+                         id="section-5"
+                    >
+                        <div class="ml-accordion__head js-accordion-toggle">
+                            <span class="ml-circle-arrow"></span>
+                            <h2 class="ml-accordion__heading">Подготовка</h2>
+                        </div>
+                        <div class="ml-accordion__body" style="display: block;">
+                            <p>Чаще всего не&nbsp;требуется.</p>
+<p>Наличие большого количества волос на&nbsp;грудной клетке у&nbsp;мужчин является причиной артефактов&nbsp;&mdash; искажений записи при недостаточно плотном прилегании электродов к&nbsp;коже. Если планируется длительное мониторирование ЭКГ, рекомендуется бриться.</p>                        </div>
+                    </div>
+                                                        <div class="ml-accordion active"
+                         id="section-6"
+                    >
+                        <div class="ml-accordion__head js-accordion-toggle">
+                            <span class="ml-circle-arrow"></span>
+                            <h2 class="ml-accordion__heading">Запись на ЭКГ</h2>
+                        </div>
+                        <div class="ml-accordion__body" style="display: block;">
+                            <p>
+	На&nbsp;регистрацию ЭКГ <nobr><b>врачом-специалистом</b></nobr><b> с&nbsp;немедленной последующей расшифровкой</b> можно записаться на&nbsp;нашем сайте <nobr>он-лайн</nobr> с&nbsp;выбором удобного времени (по&nbsp;кнопке запись в&nbsp;разделе Диагностика), а&nbsp;также по&nbsp;телефону <nobr>колл-центра</nobr> <nobr>600-22-10</nobr>.
+</p>
+<p>
+	Также во&nbsp;всех медицинских центрах сети МедЛаб (кроме лабцентра на&nbsp;Костюшко) <b>регистрация ЭКГ</b> выполняется в&nbsp;порядке живой очереди медицинскими сёстрами. В&nbsp;этом случае расшифровка ЭКГ выполняется <nobr>врачами-специалистами</nobr> в&nbsp;часы приема, поэтому срок ее&nbsp;готовности может составлять до&nbsp;одних суток в&nbsp;зависимости от&nbsp;медцентра (доп. информация по&nbsp;телефону <nobr>колл-центра</nobr> <nobr>600-22-10</nobr>).
+</p>                        </div>
+                    </div>
+                                                                <a href="/o-nas/nashi-specialisty/kardiolog-eho-senkina/">
+        <div class="ml-expert ml-expert__detail">
+        <div class="ml-expert__photo">
+                            <img src="/thumb/83x83xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg" srcset="/thumb/83x83xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg 1x, /thumb/166x166xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg 2x" alt="Сенькина Екатерина Ивановна">
+                    </div>
+        <div class="ml-check">
+            <div class="ml-check__verified">
+                <img src="/local/templates/medlab/assets/icons/expert-check.svg" alt="Статья проверена врачом">
+                <p>Статья проверена экспертом</p>
+            </div>
+            <h4>Сенькина Екатерина Ивановна</h4>
+                            <p>
+                    <b>Кардиолог</b>
+                                            , врач функциональной диагностики                                    </p>
+                                                    <p class="ml-check__experience">Стаж 14 лет</p>
+                    </div>
+    </div>
+            </a>
+                    <div class="ml-accordion active" id="section-7"
+         data-scroll="section-services-cost"
+    >
+        <div class="ml-accordion__head js-accordion-toggle">
+            <span class="ml-circle-arrow"></span>
+            <span class="ml-accordion__heading">Стоимость услуг</span>
+        </div>
+        <div class="ml-accordion__body" style="display: block;">
+                            <div class="ml-cost">
+                    <div class="ml-cost__container">
+                                                    <div class="ml-cost__item">
+                                <div class="ml-cost__left">
+                                                <span class="ml-cost__heading">
+                                                                                                        <a href="/services/diagnostics/electrocardiogram-ecg/ekg-registraciyarasshifrovka/">
+                                                                                                        ЭКГ (регистрация+расшифровка)                                                                                                                                                                </a>
+                                                                                                    </span>
+                                </div>
+                                <div class="ml-cost__right">
+                                            <span class="ml-cost__price">
+                                                                                            1 200 — 1 400 ₽                                                                                        </span>
+                                                                            <button class="ml-btn"
+                                                onclick='SendToFormAppointment({"TYPE":"DIAGNOSTIC","ID":"182"})'
+                                        >Записаться
+                                        </button>
+                                                                    </div>
+                            </div>
+                                                    <div class="ml-cost__item">
+                                <div class="ml-cost__left">
+                                                <span class="ml-cost__heading">
+                                                                                                        <a href="/services/diagnostics/electrocardiogram-ecg/ekg-s-nagruzkoy-2-registraciirasshifrovka/">
+                                                                                                        ЭКГ с нагрузкой (2 регистрации+расшифровка)                                                                                                                                                                </a>
+                                                                                                    </span>
+                                </div>
+                                <div class="ml-cost__right">
+                                            <span class="ml-cost__price">
+                                                                                            1 400 — 2 000 ₽                                                                                        </span>
+                                                                            <button class="ml-btn"
+                                                onclick='SendToFormAppointment({"TYPE":"DIAGNOSTIC","ID":"183"})'
+                                        >Записаться
+                                        </button>
+                                                                    </div>
+                            </div>
+                                            </div>
+                </div>
+                    </div>
+    </div>
+  		                <div class="ml-map-pins" id="section-8">
+        <span class="ml-map-pins__heading">Медцентры, в которых доступна услуга</span>
+        <div class="ml-map-pins__container">
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-gorkovskaya/"
+                        >
+                                                МедЛаб Горьковская                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-novaya-ohta/"
+                        >
+                                                МедЛаб Новая Охта                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-na-lesnoj/"
+                        >
+                                                МедЛаб Лесная                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-dybenko/"
+                        >
+                                                МедЛаб Дыбенко                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-bogatyrsky/"
+                        >
+                                                МедЛаб Комендантский                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-ozerki/"
+                        >
+                                                МедЛаб Озерки                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-zhemchuzhina/"
+                        >
+                                                МедЛаб Жемчужина                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-kupchino/"
+                        >
+                                                МедЛаб Купчино                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-rybatskoe/"
+                        >
+                                                МедЛаб Рыбацкое                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/gomeopaticheskaya-klinika-yavorskogo/"
+                        >
+                                                Гомеопатическая клиника Яворского                        </a>
+                    </span>
+                </div>
+                            <div class="ml-map-pins__item">
+                    <span class="pin-marker"></span>
+                    <span class="ml-map-pins__item-text">
+                                                <a class="ml-map-pins__item-text"
+                           target="_blank"
+                           href="/medcentry/medlab-elizarovskaya/"
+                        >
+                                                МедЛаб Елизаровская                        </a>
+                    </span>
+                </div>
+                    </div>
+    </div>
+                    </div>
+    </div>
+</div>
+        <div class="ml-card-other">
+        <div class="ml-card-other__wraper">
+            <div class="ml-specialist ml-specialist--no-shadow" id="other-doctors">
+                <h2 class="ml-subheading">Специалисты</h2>
+                <div class="ml-doctors">
+						
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp "
+				               href="/o-nas/nashi-specialisty/therapist-balukova/" >
+				                <div class="ml-doctors__card-body">
+				                    				                        <div class="ml-doctors__tip">
+				                            <div class="ml-doctors__tooltip">
+				                                <p>
+				                                    				                                    				                                    Кандидат медицинских наук				                                </p>
+				                            </div>
+				                        </div>
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/0c7/5c3m8ix03pgvcl133sl6c5peyiugfuql.JPG 1x, /thumb/160x160xCUT/upload/scrud/0c7/5c3m8ix03pgvcl133sl6c5peyiugfuql.JPG 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/0c7/5c3m8ix03pgvcl133sl6c5peyiugfuql.JPG 1x, /thumb/340x340xCUT/upload/scrud/0c7/5c3m8ix03pgvcl133sl6c5peyiugfuql.JPG 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/0c7/5c3m8ix03pgvcl133sl6c5peyiugfuql.JPG" alt="Балукова Екатерина Владимировна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Балукова Екатерина Владимировна</h3>
+				                        				                        				                        				                        				                            <p>Терапевт, Гастроэнтеролог</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Дыбенко</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>24				                                    года				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp "
+				               href="/o-nas/nashi-specialisty/cardiologist-bolshakova/" >
+				                <div class="ml-doctors__card-body">
+				                    				                        <div class="ml-doctors__tip">
+				                            <div class="ml-doctors__tooltip">
+				                                <p>
+				                                    высшая категория				                                    				                                        <br>
+				                                    				                                    Доктор медицинских наук				                                </p>
+				                            </div>
+				                        </div>
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/ba7/p3w0871nhyrk61ixj0jrrhwc4602tgmv.jpg 1x, /thumb/160x160xCUT/upload/scrud/ba7/p3w0871nhyrk61ixj0jrrhwc4602tgmv.jpg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/ba7/p3w0871nhyrk61ixj0jrrhwc4602tgmv.jpg 1x, /thumb/340x340xCUT/upload/scrud/ba7/p3w0871nhyrk61ixj0jrrhwc4602tgmv.jpg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/ba7/p3w0871nhyrk61ixj0jrrhwc4602tgmv.jpg" alt="Большакова Ольга Олеговна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Большакова Ольга Олеговна</h3>
+				                        				                        				                        				                        				                            <p>Кардиолог</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Купчино</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>33				                                    года				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp "
+				               href="/o-nas/nashi-specialisty/therapist-gaivoronskyi/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/61b/rmamd97earz13g2ewommej5v3zc0dc9c.jpg 1x, /thumb/160x160xCUT/upload/scrud/61b/rmamd97earz13g2ewommej5v3zc0dc9c.jpg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/61b/rmamd97earz13g2ewommej5v3zc0dc9c.jpg 1x, /thumb/340x340xCUT/upload/scrud/61b/rmamd97earz13g2ewommej5v3zc0dc9c.jpg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/61b/rmamd97earz13g2ewommej5v3zc0dc9c.jpg" alt="Гайворонский Станислав Сергеевич">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Гайворонский Станислав Сергеевич</h3>
+				                        				                        				                        				                        				                            <p>Терапевт</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Дыбенко</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>6				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp "
+				               href="/o-nas/nashi-specialisty/cardiologist-goskova/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/2c9/yuwgpxysib2stmoo4ezxrg1q0nw39391.jpg 1x, /thumb/160x160xCUT/upload/scrud/2c9/yuwgpxysib2stmoo4ezxrg1q0nw39391.jpg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/2c9/yuwgpxysib2stmoo4ezxrg1q0nw39391.jpg 1x, /thumb/340x340xCUT/upload/scrud/2c9/yuwgpxysib2stmoo4ezxrg1q0nw39391.jpg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/2c9/yuwgpxysib2stmoo4ezxrg1q0nw39391.jpg" alt="Госькова Алена Анатольевна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Госькова Алена Анатольевна</h3>
+				                        				                        				                        				                        				                            <p>Кардиолог, врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Дыбенко</span>
+			                               </div>
+			   										                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Озерки</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>6				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/therapist-dobromyislova-natalia/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/767/82qxe1s9qzhvkvtgrbbhdmmpp04nnq05.jpeg 1x, /thumb/160x160xCUT/upload/scrud/767/82qxe1s9qzhvkvtgrbbhdmmpp04nnq05.jpeg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/767/82qxe1s9qzhvkvtgrbbhdmmpp04nnq05.jpeg 1x, /thumb/340x340xCUT/upload/scrud/767/82qxe1s9qzhvkvtgrbbhdmmpp04nnq05.jpeg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/767/82qxe1s9qzhvkvtgrbbhdmmpp04nnq05.jpeg" alt="Добромыслова Наталья Евгеньевна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Добромыслова Наталья Евгеньевна</h3>
+				                        				                        				                        				                        				                            <p>Терапевт</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Горьковская</span>
+			                               </div>
+			   										                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Новая Охта</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>18				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/ultrasound-koroleva/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/583/h1kbwk0jmv9ihvrava552aiub2zg2sy6.JPG 1x, /thumb/160x160xCUT/upload/scrud/583/h1kbwk0jmv9ihvrava552aiub2zg2sy6.JPG 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/583/h1kbwk0jmv9ihvrava552aiub2zg2sy6.JPG 1x, /thumb/340x340xCUT/upload/scrud/583/h1kbwk0jmv9ihvrava552aiub2zg2sy6.JPG 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/583/h1kbwk0jmv9ihvrava552aiub2zg2sy6.JPG" alt="Королева Наталья Николаевна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Королева Наталья Николаевна</h3>
+				                        				                        				                        				                        				                            <p>Врач УЗИ, врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Жемчужина</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>22				                                    года				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/therapeutist-mamedova/" >
+				                <div class="ml-doctors__card-body">
+				                    				                        <div class="ml-doctors__tip">
+				                            <div class="ml-doctors__tooltip">
+				                                <p>
+				                                    высшая категория				                                    				                                    				                                </p>
+				                            </div>
+				                        </div>
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/eca/xwkabe5m4ls1r9svgqtkmre9rnzhxgkx.JPG 1x, /thumb/160x160xCUT/upload/scrud/eca/xwkabe5m4ls1r9svgqtkmre9rnzhxgkx.JPG 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/eca/xwkabe5m4ls1r9svgqtkmre9rnzhxgkx.JPG 1x, /thumb/340x340xCUT/upload/scrud/eca/xwkabe5m4ls1r9svgqtkmre9rnzhxgkx.JPG 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/eca/xwkabe5m4ls1r9svgqtkmre9rnzhxgkx.JPG" alt="Мамедова Вусала Шамистановна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Мамедова Вусала Шамистановна</h3>
+				                        				                        				                        				                        				                            <p>Терапевт, врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Купчино</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>10				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/kardiolog-eho-senkina/" >
+				                <div class="ml-doctors__card-body">
+				                    				                        <div class="ml-doctors__tip">
+				                            <div class="ml-doctors__tooltip">
+				                                <p>
+				                                    1 категория				                                    				                                    				                                </p>
+				                            </div>
+				                        </div>
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg 1x, /thumb/160x160xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg 1x, /thumb/340x340xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/cce/0bzv10gxkpiy7imz21x9prswkbbgokmp.jpg" alt="Сенькина Екатерина Ивановна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Сенькина Екатерина Ивановна</h3>
+				                        				                        				                        				                        				                            <p>Кардиолог, врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Елизаровская</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>14				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/cardiologist-sizonenko/" >
+				                <div class="ml-doctors__card-body">
+				                    				                        <div class="ml-doctors__tip">
+				                            <div class="ml-doctors__tooltip">
+				                                <p>
+				                                    1 категория				                                    				                                    				                                </p>
+				                            </div>
+				                        </div>
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/e35/956tjj59nwxtjarvb0zg0v23sbjcbjfe.JPG 1x, /thumb/160x160xCUT/upload/scrud/e35/956tjj59nwxtjarvb0zg0v23sbjcbjfe.JPG 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/e35/956tjj59nwxtjarvb0zg0v23sbjcbjfe.JPG 1x, /thumb/340x340xCUT/upload/scrud/e35/956tjj59nwxtjarvb0zg0v23sbjcbjfe.JPG 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/e35/956tjj59nwxtjarvb0zg0v23sbjcbjfe.JPG" alt="Сизоненко Анна Александровна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Сизоненко Анна Александровна</h3>
+				                        				                        				                        				                        				                            <p>Терапевт, Кардиолог, врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Рыбацкое</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>19				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/cardiologist-suhanova/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/34a/vkfrfpypn51a9vxrh8jnxa595l25j7wk.jpg 1x, /thumb/160x160xCUT/upload/scrud/34a/vkfrfpypn51a9vxrh8jnxa595l25j7wk.jpg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/34a/vkfrfpypn51a9vxrh8jnxa595l25j7wk.jpg 1x, /thumb/340x340xCUT/upload/scrud/34a/vkfrfpypn51a9vxrh8jnxa595l25j7wk.jpg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/34a/vkfrfpypn51a9vxrh8jnxa595l25j7wk.jpg" alt="Суханова Оксана Анатольевна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Суханова Оксана Анатольевна</h3>
+				                        				                        				                        				                        				                            <p>Кардиолог</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Жемчужина</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>33				                                    года				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/ultrasound-harchenko/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/369/0epucn6jhmoxtk9d7yuwuc9sfdhaikuq.JPG 1x, /thumb/160x160xCUT/upload/scrud/369/0epucn6jhmoxtk9d7yuwuc9sfdhaikuq.JPG 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/369/0epucn6jhmoxtk9d7yuwuc9sfdhaikuq.JPG 1x, /thumb/340x340xCUT/upload/scrud/369/0epucn6jhmoxtk9d7yuwuc9sfdhaikuq.JPG 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/369/0epucn6jhmoxtk9d7yuwuc9sfdhaikuq.JPG" alt="Харченко Елена Константиновна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Харченко Елена Константиновна</h3>
+				                        				                        				                        				                        				                            <p>Врач УЗИ</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Жемчужина</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>22				                                    года				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/pediatrician-chernova/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/medlab/344/jgg34971fqwyymmohsa0mas6o2u89vii.jpg 1x, /thumb/160x160xCUT/upload/medlab/344/jgg34971fqwyymmohsa0mas6o2u89vii.jpg 2x">
+        <source srcset="/thumb/170x170xCUT/upload/medlab/344/jgg34971fqwyymmohsa0mas6o2u89vii.jpg 1x, /thumb/340x340xCUT/upload/medlab/344/jgg34971fqwyymmohsa0mas6o2u89vii.jpg 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/medlab/344/jgg34971fqwyymmohsa0mas6o2u89vii.jpg" alt="Чернова Татьяна Александровна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Чернова Татьяна Александровна</h3>
+				                        				                        				                        				                        				                            <p>врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">Гомеопатическая клиника Яворского</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>33				                                    года				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 400 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 1x, /thumb/160x160xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 2x">
+        <source srcset="/thumb/170x170xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 1x, /thumb/340x340xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/local/templates/medlab/assets/img/doctor-no-photo.png" alt="ЭКГ с расшифровкой в течение суток (Богатырский)">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>ЭКГ с расшифровкой в течение суток (Богатырский)</h3>
+				                        				                        				                        				                        				                            <p>врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Комендантский</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 1x, /thumb/160x160xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 2x">
+        <source srcset="/thumb/170x170xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 1x, /thumb/340x340xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/local/templates/medlab/assets/img/doctor-no-photo.png" alt="ЭКГ с расшифровкой в течение суток (Лесная)">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>ЭКГ с расшифровкой в течение суток (Лесная)</h3>
+				                        				                        				                        				                        				                            <p>врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Лесная</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 1x, /thumb/160x160xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 2x">
+        <source srcset="/thumb/170x170xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 1x, /thumb/340x340xCUT/local/templates/medlab/assets/img/doctor-no-photo.png 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/local/templates/medlab/assets/img/doctor-no-photo.png" alt="ЭКГ с расшифровкой в течение суток (Некрасова, 11)">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>ЭКГ с расшифровкой в течение суток (Некрасова, 11)</h3>
+				                        				                        				                        				                        				                            <p>врач функциональной диагностики</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">Гомеопатическая клиника Яворского</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 400 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				        				            <a class="ml-doctors__card ml-doctors__card-wrapp ml-doctors__card-hidden"
+				               href="/o-nas/nashi-specialisty/cardiologist-yusifzade/" >
+				                <div class="ml-doctors__card-body">
+				                    				                    				                    <div class="ml-doctors__photowrap"> <picture>
+        <source media="(max-width: 632px)" srcset="/thumb/80x80xCUT/upload/scrud/c5e/yg6dywsc0riesj1lkz8j1f124cxjaspi.JPG 1x, /thumb/160x160xCUT/upload/scrud/c5e/yg6dywsc0riesj1lkz8j1f124cxjaspi.JPG 2x">
+        <source srcset="/thumb/170x170xCUT/upload/scrud/c5e/yg6dywsc0riesj1lkz8j1f124cxjaspi.JPG 1x, /thumb/340x340xCUT/upload/scrud/c5e/yg6dywsc0riesj1lkz8j1f124cxjaspi.JPG 2x">
+        <img class="ml-doctors__photo" style="object-fit: cover;" src="/thumb/170x170xCUT/upload/scrud/c5e/yg6dywsc0riesj1lkz8j1f124cxjaspi.JPG" alt="Юсифзаде Амина Эхтибаровна">
+    </picture></div>
+				                    <div class="ml-doctors__info">
+				                        <h3>Юсифзаде Амина Эхтибаровна</h3>
+				                        				                        				                        				                        				                            <p>Терапевт, Кардиолог, Врач УЗИ</p>
+				                        				                    </div>
+
+			                       			                           <div class="ml-map-pins__container">
+			   	                        			                               <div class="ml-map-pins__item">
+			                                   <span class="pin-marker"></span>
+			                                   <span class="ml-map-pins__item-text">МедЛаб Купчино</span>
+			                               </div>
+			   										                           </div>
+			                       				                </div>
+				                <div class="ml-doctors__card-footer">
+				                    <div class="ml-benefits">
+				                        				                        				                            <div class="ml-benefits__experience">
+				                                <p>Стаж </p>
+				                                <p>6				                                    лет				                                </p>
+				                            </div>
+				                                                                				                            <div class="ml-benefits__price">
+				                                <p>Стоимость услуги</p>
+				                                <p>от 1 200 ₽</p>
+				                            </div>
+				                        				                    </div>
+				                </div>
+				            </a>
+				                                                    </div>
+                    					<div class="centered">
+					    <a class="ml-btns js-show-doctors" href="#">Показать еще</a>
+					</div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <section class="bg-lightgreen">
+        <div class="ml-content">
+            <div class="ml-med-service" data-scroll="section-services-medlab">
+                <h2 id="section-10">Рекомендуемые услуги</h2>
+                                    <div class="ml-med-service-center">
+                        <div class="ml-med-service-center__btn ml-btn-arrow">
+                            <p>Приемы врачей
+                                <span>
+                                    <svg viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.3753 5.78087L12.1562 6.40556L13.4056 4.84383L12.6247 4.21913L11.3753 5.78087ZM7 1L7.62469 0.219131C7.25948 -0.0730443 6.74052 -0.0730443 6.3753 0.219131L7 1ZM1.3753 4.21913L0.594436 4.84383L1.84383 6.40556L2.62469 5.78087L1.3753 4.21913ZM12.6247 4.21913L7.62469 0.219131L6.3753 1.78087L11.3753 5.78087L12.6247 4.21913ZM6.3753 0.219131L1.3753 4.21913L2.62469 5.78087L7.62469 1.78087L6.3753 0.219131Z"
+                                              fill="#4A993A"
+                                        ></path>
+                                    </svg>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="ml-med-service-table ml-med-service-wrap">
+                            <div class="ml-med-service-table__body">
+                                                                    <div class="ml-med-service-table__item">
+                                        <div class="ml-med-service-table__item-left">
+                                                                                            <a class="ml-med-service-table__item-heading"
+                                                   href="/services/doctors-appointments/cardiologist/"
+                                                >
+                                                    Кардиолог                                                </a>
+                                                                                    </div>
+                                        <div class="ml-med-service-table__item-right">
+                                                                                            <span class="ml-med-service-table__item-price-long">
+                                                    <span class="ml-med-service-table__item-label">Первичный</span>
+                                                    <span class="ml-med-service-table__item-value">1 900 — 3 300 ₽</span>
+                                                </span>
+                                                <span class="ml-med-service-table__item-price-long">
+                                                    <span class="ml-med-service-table__item-label">Повторный</span>
+                                                    <span class="ml-med-service-table__item-value">1 900 — 3 300 ₽</span>
+                                                </span>
+                                                                                        <span class="ml-med-service-table__item-btn">
+                                                                                                                                            <a class="ml-btn ml-btn-sm"
+                                                   onclick='SendToFormAppointment({"TYPE":"SPECIALTY","ID":"276","PARENT_ID":"54"})'
+                                                >Записаться</a>
+                                                                                    </span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                                                    <div class="ml-med-service-center">
+                        <div class="ml-med-service-center__btn ml-btn-arrow">
+                            <p>Диагностика
+                                <span>
+                                    <svg viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.3753 5.78087L12.1562 6.40556L13.4056 4.84383L12.6247 4.21913L11.3753 5.78087ZM7 1L7.62469 0.219131C7.25948 -0.0730443 6.74052 -0.0730443 6.3753 0.219131L7 1ZM1.3753 4.21913L0.594436 4.84383L1.84383 6.40556L2.62469 5.78087L1.3753 4.21913ZM12.6247 4.21913L7.62469 0.219131L6.3753 1.78087L11.3753 5.78087L12.6247 4.21913ZM6.3753 0.219131L1.3753 4.21913L2.62469 5.78087L7.62469 1.78087L6.3753 0.219131Z"
+                                              fill="#4A993A"
+                                        ></path>
+                                    </svg>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="ml-med-service-wrap">
+                                                                                                <div class="ml-med-service-center-items">
+                                                                                    <a target="_blank"
+                                               href="/services/diagnostics/monitoring-ecg-holter/sutochnyy-monitoring-elektrokardiografii/"
+                                            >
+                                                Суточный мониторинг электрокардиографии (ЭКГ)                                                                                            </a>
+                                                                                <div class="ml-med-service-center-items__price">
+                                                                                            <p>3 200 ₽</p>
+                                                                                                                                        <a data-fancybox="" data-src="#request-call">
+                                                    <button class="ml-btn-text" type="button">Записаться по телефону
+                                                    </button>
+                                                </a>
+                                                                                    </div>
+                                    </div>
+                                                                                    </div>
+                    </div>
+                                                    <div class="ml-med-service-center">
+                        <div class="ml-med-service-center__btn ml-btn-arrow">
+                            <p>УЗИ
+                                <span>
+                                    <svg viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.3753 5.78087L12.1562 6.40556L13.4056 4.84383L12.6247 4.21913L11.3753 5.78087ZM7 1L7.62469 0.219131C7.25948 -0.0730443 6.74052 -0.0730443 6.3753 0.219131L7 1ZM1.3753 4.21913L0.594436 4.84383L1.84383 6.40556L2.62469 5.78087L1.3753 4.21913ZM12.6247 4.21913L7.62469 0.219131L6.3753 1.78087L11.3753 5.78087L12.6247 4.21913ZM6.3753 0.219131L1.3753 4.21913L2.62469 5.78087L7.62469 1.78087L6.3753 0.219131Z"
+                                              fill="#4A993A"
+                                        ></path>
+                                    </svg>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="ml-med-service-wrap">
+                                                            <div class="ml-med-service-center-items">
+                                                                            <a target="_blank"
+                                           href="/services/ultrasound/ultrasound-of-the-heart/ehokardiografiya-vzroslym/"
+                                        >
+                                            Эхокардиография взрослым                                        </a>
+                                                                        <div class="ml-med-service-center-items__price">
+                                                                                    <p>3 200 — 3 500 ₽</p>
+                                                                                                                            <button class="ml-btn ml-btn-sm"
+                                                    type="button"
+                                                    onclick='SendToFormAppointment({"TYPE":"ULTRASOUND","ID":"416"})'
+                                            >Записаться
+                                            </button>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                    </div>
+                                                                                    <div class="ml-med-service-center">
+                        <div class="ml-med-service-center__btn ml-btn-arrow">
+                            <p>Акции
+                                <span>
+                                  <svg viewBox="0 0 14 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.3753 5.78087L12.1562 6.40556L13.4056 4.84383L12.6247 4.21913L11.3753 5.78087ZM7 1L7.62469 0.219131C7.25948 -0.0730443 6.74052 -0.0730443 6.3753 0.219131L7 1ZM1.3753 4.21913L0.594436 4.84383L1.84383 6.40556L2.62469 5.78087L1.3753 4.21913ZM12.6247 4.21913L7.62469 0.219131L6.3753 1.78087L11.3753 5.78087L12.6247 4.21913ZM6.3753 0.219131L1.3753 4.21913L2.62469 5.78087L7.62469 1.78087L6.3753 0.219131Z"
+                                          fill="#4A993A"
+                                    ></path>
+                                  </svg>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="ml-med-service-wrap ml-med-service__stock">
+                                                            <div class="stock__item">
+                                    <div class="stock__item-head">
+                                                                                <a href="/services/promotions/aktsiya-priem-kardiologa-s-ekg/">
+                                                                                                                                        <img class="stock__photo"
+                                                     src="/upload/scrud/728/kvb6twp4d1l4aieze4k4wlwwo57xou81.jpg"
+                                                     alt="MDN"
+                                                >
+                                            
+                                                                                    </a>
+                                                                        </div>
+                                    <div class="stock__item-body">
+                                        <p class="stock__desc">Прием кардиолога + ЭКГ</p>
+                                                                            </div>
+                                    <div class="stock__item-footer">
+                                        <div class="stock__price">
+                                            <span class="stock__price-old">
+                                                                                                    3 100 ₽                                                                                            </span>
+                                            <span class="stock__price-cur">
+                                                                                                    2 500 ₽                                                                                            </span>
+                                        </div>
+                                                                                    <button class="ml-btn ml-btn-sm stock__btn"
+                                                    onclick='SendToFormAppointment({"TYPE":"PROMOTION","ID":"158"})'
+                                            >Записаться
+                                            </button>
+                                                                            </div>
+                                </div>
+                                                            <div class="stock__item">
+                                    <div class="stock__item-head">
+                                                                                <a href="/services/promotions/aktsiya-priem-kardiologa-uzi-serdtsa-ekg-za-3300-rublej/">
+                                                                                                                                        <img class="stock__photo"
+                                                     src="/upload/scrud/89d/57tfgj761vtda6p7kc689hxqhl6qbs4z.jpg"
+                                                     alt="MDN"
+                                                >
+                                            
+                                                                                    </a>
+                                                                        </div>
+                                    <div class="stock__item-body">
+                                        <p class="stock__desc">Прием кардиолога + УЗИ сердца + ЭКГ</p>
+                                                                            </div>
+                                    <div class="stock__item-footer">
+                                        <div class="stock__price">
+                                            <span class="stock__price-old">
+                                                                                                    6 300 ₽                                                                                            </span>
+                                            <span class="stock__price-cur">
+                                                                                                    5 190 ₽                                                                                            </span>
+                                        </div>
+                                                                                    <button class="ml-btn ml-btn-sm stock__btn"
+                                                    onclick='SendToFormAppointment({"TYPE":"PROMOTION","ID":"159"})'
+                                            >Записаться
+                                            </button>
+                                                                            </div>
+                                </div>
+                                                    </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+
+<div id="bxdynamic_ouHQju_end" style="display:none"></div>
+</main>
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="footer-col__item footer-col__item--1">
+                <a class="footer-col__item-heading">Основное<span class="footer-col__item-arrow js-expand-footer"></span></a>
+                <div id="bxdynamic_aLzmcq_start" style="display:none"></div><div class="footer-col__item-link--container">
+            <a class="footer-col__item-link"
+           href="/o-nas/nashi-specialisty/"><span>Врачи</span></a>
+            <a class="footer-col__item-link"
+           href="/services/analyzes/"><span>Анализы</span></a>
+            <a class="footer-col__item-link"
+           href="/services/ultrasound/"><span>УЗИ</span></a>
+            <a class="footer-col__item-link"
+           href="/services/diagnostics/"><span>Диагностика</span></a>
+            <a class="footer-col__item-link"
+           href="/medcentry/"><span>Медцентры</span></a>
+    </div><div id="bxdynamic_aLzmcq_end" style="display:none"></div>            </div>
+            <div class="footer-col__item">
+                <a class="footer-col__item-heading">Пациентам<span class="footer-col__item-arrow js-expand-footer"></span></a>
+                <div id="bxdynamic_xZANm1_start" style="display:none"></div><div class="footer-col__item-link--container">
+            <a class="footer-col__item-link"
+           href=""><span></span></a>
+            <a class="footer-col__item-link"
+           href="/pacientam/preparation-analyzes/"><span>Подготовка к анализам</span></a>
+            <a class="footer-col__item-link"
+           href="/pacientam/preparation-examinations/"><span>Подготовка к обследованиям</span></a>
+            <a class="footer-col__item-link"
+           href="/pacientam/rules-visiting-medical-centers/"><span>Правила посещения медцентров</span></a>
+            <a class="footer-col__item-link"
+           href="/pacientam/articles-about-health/"><span>Статьи</span></a>
+    </div><div id="bxdynamic_xZANm1_end" style="display:none"></div>            </div>
+            <div class="footer-col__item"><a class="footer-col__item-heading">О нас<span class="footer-col__item-arrow js-expand-footer"></span></a>
+                <div id="bxdynamic_51yma7_start" style="display:none"></div><div class="footer-col__item-link--container">
+            <a class="footer-col__item-link"
+           href="/o-nas/news/"><span>Новости</span></a>
+            <a class="footer-col__item-link"
+           href="/o-nas/jobs/"><span>Вакансии</span></a>
+            <a class="footer-col__item-link"
+           href="/o-nas/about/"><span>О МедЛаб</span></a>
+            <a class="footer-col__item-link"
+           href="/o-nas/legal-information/"><span>Правовая информация</span></a>
+    </div><div id="bxdynamic_51yma7_end" style="display:none"></div>            </div>
+            <div class="footer-col__item footer-col__item--4">
+                <span class="footer-col__item-heading">Колл-центр</span>
+<span class="footer-col__item-time"><br>Будни: 8:00&mdash;21:00, выходные: 8:00&mdash;20:00<br></span>
+<a class="footer-col__item-phone" href="tel:+78126002210">+7 (812) 600-22-10</a>                <a class="footer-col__item-link-sm" data-fancybox data-src="#request-call">Заказать звонок</a>
+                <div id="bxdynamic_fyb9E1_start" style="display:none"></div><div class="fn-modal modal-main fn-modal-sm js-target-modal-faq" id="ask-question">
+    <div class="modal-main__content js-faq-form">
+        <div class="modal-main__head">
+            <div class="modal-main__heading">Ваш вопрос</div>
+        </div>
+        <form enctype="multipart/form-data" method="post" data-ajax-form-faq="FLS\Medlab\ComponentFaq">
+            <div class="modal-main__body">
+                <label class="txt-input mb-16">
+                    <div class="txt-input__label">Тема вопроса <span class="asterisk">*</span></div>
+                    <select class="selectpicker js-faq-selector"
+                            data-ajax-component="FLS\Medlab\ComponentFaq"
+                            data-ajax-action="GetThemeDescription"
+                            required=""
+                            name="theme"
+                    >
+                        <option value="" selected="selected" disabled="disabled" hidden>Выберите тему</option>
+                                                    <option value="3">Анализы</option>
+                                                    <option value="7">Запись на прием (записаться, перенести, отменить)</option>
+                                                    <option value="1">Личный кабинет</option>
+                                                    <option value="9">Оставить отзыв</option>
+                                                    <option value="11">Предложения по рекламе и закупкам</option>
+                                                    <option value="13">Прочие вопросы</option>
+                                            </select>
+                </label>
+                <div class="modal-main__text link-green mb-24">
+                    <p class="modal-main__text-item js-faq-pre-answer">
+                        Мы оставляем за собой право не отвечать на вопросы по рекламе,
+                        снабжению, вопросы, <a href="#">заданные в грубой форме.</a>
+                    </p>
+                </div>
+                <div class="txt-input--double">
+                    <label class="txt-input">
+                        <div class="txt-input__label">Ваше имя <span class="asterisk">*</span></div>
+                        <div class="txt-input__wrap">
+                            <input class="txt-input__field js-faq-input"
+                                   type="text"
+                                   required=""
+                                   id="name"
+                                   name="name"
+                            >
+                            <div class="txt-input__caption js-faq-input-label">для обращения</div>
+                        </div>
+                    </label>
+                    <label class="txt-input">
+                        <div class="txt-input__label">E-mail <span class="asterisk">*</span></div>
+                        <div class="txt-input__wrap">
+                            <input class="txt-input__field js-faq-email"
+                                   type="email"
+                                   required=""
+                                   id="email"
+                                   name="email"
+                                   pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$"
+                            >
+                            <div class="txt-input__caption js-faq-email-label">на эту почту придет ответ</div>
+                        </div>
+                    </label>
+                </div>
+                <label class="txt-input">
+                    <div class="txt-input__label">Текст вопроса</div>
+                    <div class="txt-input__wrap">
+                    <textarea class="txt-input__textarea js-faq-text"
+                              id="text"
+                              name="text"
+                              maxlength="300"
+                    ></textarea>
+                        <div class="txt-input__caption js-faq-text-label">Не более 300 символов</div>
+                    </div>
+                </label>
+            </div>
+            <div class="modal-main__footer">
+                <button class="ml-btn js-faq-send-question"
+                        type="submit"
+                >Отправить
+                </button>
+                <span class="modal-text">Нажимая на кнопку «Отправить», вы даете <br> согласие на обработку <a
+                            target="_blank"
+                            href="/info-rules/policy-personal-data/"
+                    >персональных данных</a></span>
+            </div>
+        </form>
+    </div>
+    <!-- ajax form success show-->
+    <div class="modal-main__success js-faq-good" hidden>
+        <div class="question-success">
+            <div class="question-success__heading">
+                <div class="icon-success"></div>
+                Вопрос отправлен
+            </div>
+            <div class="question-success__text">Ответ на вопрос может занимать до 3-х дней</div>
+            <a class="ml-btn question-success__btn" href=".">Закрыть</a>
+        </div>
+    </div>
+    <!-- ajax form failed show-->
+    <div class="modal-main__error js-faq-bad" hidden>
+        <div class="question-success">
+            <div class="question-error__heading">Не удалось отправить вопрос</div>
+            <div class="question-error__text">Извините, произошла техническая ошибка. Попробуйте повторить позже.
+            </div>
+            <a class="ml-btn question-error__btn" href=".">Закрыть</a>
+        </div>
+    </div>
+</div>
+<div id="bxdynamic_fyb9E1_end" style="display:none"></div>                <a class="ml-btn footer-col__item-btn" data-fancybox data-src="#ask-question">Задать вопрос</a>            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-text">
+                <p class="footer-text__item">Используя наши сервисы и записи с сайта, вы соглашаетесь с политикой обработки персональных данных.</p>
+<p class="footer-text__item">Есть противопоказания, посоветуйтесь с врачом.</p>
+<p class="footer-text__item">© Сеть медицинских центров и лабораторий МедЛаб, Санкт-Петербург, 2003&mdash;2024</p>
+            </div>
+            <div class="footer-links">
+                <a class="footer-links__item" href="mailto:clients@medlabspb.ru"><span>clients@medlabspb.ru</span><br><b class="footer-text__item">Для пациентов</b></a></div>
+<div class="footer-links">
+<a class="footer-links__item" href="mailto:info@medlabspb.ru"><span>info@medlabspb.ru</span><br><b class="footer-text__item">По другим вопросам</b></a>
+</div>
+<div class="footer-links">
+<a class="footer-links__item" href="/info-rules/term-of-use/"><span>Пользовательское соглашение</span></a><br>
+<a class="footer-links__item" href="/info-rules/policy-personal-data/"><span>Политика обработки персональных данных</span></a>            </div>
+        </div>
+    </div>
+</footer>
+<div id="bxdynamic_DgrExt_start" style="display:none"></div><!-- Заказать звонок-->
+<div class="fn-modal modal-main fn-modal-sm" id="request-call">
+    <div class="modal-main__contain">
+        <!-- ajax form success hide-->
+        <div class="modal-main__content js-callback-form">
+            <div class="modal-main__head">
+                <div class="modal-main__heading">Заказ обратного звонка</div>
+            </div>
+            <form enctype="multipart/form-data" method="post" data-ajax-form-callback="FLS\Medlab\ComponentCallback" id="callbackform">
+                <div class="modal-main__body modal-main__body-sm">
+                    <label class="txt-input">
+                        <div class="txt-input__label">Ваше имя <span class="asterisk">*</span></div>
+                        <div class="txt-input__wrap">
+                            <input class="txt-input__field js-callback-input"
+                                   id="name"
+                                   name="name"
+                                   type="text"
+                                   required=""
+                                   maxlength="50"
+                            >
+                            <div class="txt-input__caption js-callback-input-label"></div>
+                        </div>
+                    </label>
+                    <label class="txt-input">
+                        <div class="txt-input__label">Номер телефона <span class="asterisk">*</span></div>
+                        <div class="txt-input__wrap">
+                            <input class="txt-input__field js-callback-phone tel"
+                                   name="phone"
+                                   required=""
+                                   value="+7"
+                            >
+                            <div class="txt-input__caption js-callback-phone-label"></div>
+                        </div>
+                    </label>
+                </div>
+                <div class="modal-main__text text-center">
+                    <p class="modal-main__text-item">Колл-центр: будни 8:00-21:00, выходные 8:00-20:00.</p>
+                    <p class="modal-main__text-item">Мы свяжемся с вами в течение рабочего дня. Для срочного обращения
+                        звоните по телефону <a href="tel:+78126002210">+7 (812) 600-22-10</a>.</p>
+                </div>
+                <div class="modal-main__footer">
+                    <button class="ml-btn" type="submit">Отправить</button>
+                    <span class="modal-text">Нажимая на кнопку «Отправить», вы даете <br> согласие на обработку <a
+                            target="_blank"
+                            href="/info-rules/policy-personal-data/">персональных данных</a></span>
+                </div>
+            </form>
+        </div>
+        <!-- ajax form success show-->
+        <div class="modal-main__success js-callback-good">
+            <div class="request-success">
+                <div class="request-success__heading">
+                    <div class="icon-success"></div>
+                    Заявка принята
+                </div>
+                <div class="request-success__text">Ожидайте звонка оператора</div>
+                <a class="ml-btn request-success__btn" href=".">Хорошо</a>
+            </div>
+        </div>
+    </div>
+</div><div id="bxdynamic_DgrExt_end" style="display:none"></div><script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn-ru.bitrix24.ru/b25837200/crm/site_button/loader_6_g35grd.js');
+</script>
+</body>
+</html><!--c36decd0e4e10bd7ab4e1745e0b3e651-->
